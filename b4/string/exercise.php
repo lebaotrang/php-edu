@@ -17,7 +17,18 @@ $a = $before_email.$code.$end_email;
 /*  BT2
     mã hóa số đt 0123456789 -> 012****789
 */
+function maskPhoneNumber($phoneNumber) {
+    // Kiểm tra độ dài của số điện thoại
+    if (strlen($phoneNumber) != 10) {
+        return "Số điện thoại không hợp lệ";
+    }
+    // Mã hóa số điện thoại
+    $maskedNumber = substr_replace($phoneNumber, '****', 3, 4);
+    return $maskedNumber;
+}
+// Ví dụ sử dụng
 $phone = "0123456789";
+echo maskPhoneNumber($phone);
 
 
 
@@ -33,5 +44,5 @@ $title = "China, Finland enter finale of Da Nang international firework 1st fest
 $str = strtolower($title);
 $pattern ="/[^a-z0-9]+/";
 $slug = preg_replace($pattern, "-", $str);
-echo $slug;
+// echo $slug;
 ?>
